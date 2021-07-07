@@ -1,0 +1,15 @@
+.design-card {
+  margin: 20px 10px;
+  float: left;
+  width: 100px;
+  padding: 10px;
+}
+
+.design-image {
+  width: 100px;
+  float: left;
+}
+
+.designs-list {
+  display: inline-block;
+}
