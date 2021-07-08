@@ -1,6 +1,7 @@
 import {Design} from './app/model/design';
+import {Album} from './app/model/album';
 
-export const DESIGNS: any = [
+export const DESIGNS: Design[] = [
   {
     DesignID: 5286,
     Caption: 'Flower',
@@ -11,7 +12,13 @@ export const DESIGNS: any = [
     DesignUrl: 'Flower-17-681-Free-Design.aspx',
     IsAuthenticated: false,
     IsAdministrator: false,
-    Title: 'Flower|5286'
+    Title: 'Flower|5286',
+    TopTipText1: '',
+    TopTipText2: '',
+    TopTipText3: '',
+    TopTipText4: '',
+    TopTipText5: '',
+    TopTipText6: ''
   },
   {
     DesignID: 5061,
@@ -23,7 +30,13 @@ export const DESIGNS: any = [
     DesignUrl: 'Dog-18-156-Free-Design.aspx',
     IsAuthenticated: false,
     IsAdministrator: false,
-    Title: 'Dog|5061'
+    Title: 'Dog|5061',
+    TopTipText1: '',
+    TopTipText2: '',
+    TopTipText3: '',
+    TopTipText4: '',
+    TopTipText5: '',
+    TopTipText6: ''
   },
   {
     DesignID: 2947,
@@ -35,11 +48,38 @@ export const DESIGNS: any = [
     DesignUrl: 'Knitting-14-237-Free-Design.aspx',
     IsAuthenticated: false,
     IsAdministrator: false,
-    Title: 'Knitting|2947'
+    Title: 'Knitting|2947',
+    TopTipText1: '',
+    TopTipText2: '',
+    TopTipText3: '',
+    TopTipText4: '',
+    TopTipText5: '',
+    TopTipText6: ''
   }
   ];
 
 
+export const ALBUMS: Album[]  = [
+  { AlbumID: 1,
+    Caption: 'Africa'},
+  {AlbumID: 2,
+    Caption: 'Aliens'},
+  {AlbumID: 3,
+    Caption: 'Alphabets'},
+  {AlbumID: 4,
+    Caption: 'Angels'},
+  {AlbumID: 5,
+    Caption: 'Animals'},
+  {AlbumID: 6,
+    Caption: 'Australia'},
+  {AlbumID: 7,
+    Caption: 'Ballet'},
+  {AlbumID: 8,
+    Caption: 'Bathroom'},
+];
+
 export function findDesignById(designId: number): Design {
-  return DESIGNS.find(design => design.DesignID === design);
+  return DESIGNS.find(design => design.DesignID === designId);
 }
+
+

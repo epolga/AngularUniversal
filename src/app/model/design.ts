@@ -5,7 +5,7 @@ export interface Design {
   ImageUrl: string;
   FacebookUrl: string;
   DownloadParams: string;
-  DesignUrl: number;
+  DesignUrl: string;
   IsAuthenticated: boolean;
   IsAdministrator: boolean;
   Title: string;

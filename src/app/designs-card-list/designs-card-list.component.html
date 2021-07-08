@@ -1,5 +1,5 @@
 <div class="designs-list">
-<design-card *ngFor="let design of designs" class="design-card mat-elevation-z10">
+<div *ngFor="let design of designs" class="design-card mat-elevation-z10">
   <mat-card-header>
     <p>{{design.Caption}}</p>
   </mat-card-header>
@@ -19,5 +19,29 @@
 
 
   </mat-card-actions>
-</design-card>
+</div>
+  <div *ngFor="let design of designs" class="design-card mat-elevation-z10">
+    <mat-card-header>
+      <p>{{design.Caption}}</p>
+    </mat-card-header>
+    <div style="height: 100px">
+      <img design-image [src]="design.ImageUrl">
+    </div>
+    <div style="height: 70px">
+      <mat-card-content>
+        <p>{{design.Description}}</p>
+      </mat-card-content>
+    </div>
+    <mat-card-actions class="course-actions">
+
+      <button mat-button class="mat-raised-button mat-primary" [routerLink]="['/courses', design.DesignID]">
+        Download
+      </button>
+
+
+    </mat-card-actions>
+  </div>
+  <button mat-fab class="float-left" color="primary" style="top: 250px;position: fixed; height: 100px">
+     More<br>Designs<br><mat-icon>expand_more</mat-icon>
+  </button>
 </div>

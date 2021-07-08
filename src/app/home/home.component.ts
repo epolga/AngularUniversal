@@ -6,6 +6,7 @@ import {map, tap} from 'rxjs/operators';
 import {Title} from '@angular/platform-browser';
 import {Design} from '../model/design';
 import {DesignsService} from '../services/designs.service';
+import {Album} from '../model/album';
 
 @Component({
     selector: 'home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   courses$: Observable<Course[]>;
   designs$: Observable<Design[]>;
+  albums$: Observable<Album[]>;
 
   constructor(private coursesService: CoursesService,
               private designesService: DesignsService,
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
             );
         // const baseUrl = this.getBaseUrl();
         this.designs$ = this.designesService.getDesigns();
+        this.albums$ = this.designesService.getAlbums();
     }
 /*
   getBaseUrl(): string {

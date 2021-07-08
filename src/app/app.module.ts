@@ -33,6 +33,7 @@ import {AppShellRenderDirective} from "./directives/app-shell-render.directive";
 import {AppShellNoRenderDirective} from "./directives/app-shell-norender.directive";
 import {DesignsService} from "./services/designs.service";
 import { DesignsCardListComponent } from './designs-card-list/designs-card-list.component';
+import { AlbumsTagListComponent } from './albums-tag-list/albums-tag-list.component';
 
 
 
@@ -47,7 +48,8 @@ import { DesignsCardListComponent } from './designs-card-list/designs-card-list.
     AboutComponent,
     AppShellRenderDirective,
     AppShellNoRenderDirective,
-    DesignsCardListComponent
+    DesignsCardListComponent,
+    AlbumsTagListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {Design} from '../model/design';
 import {map} from 'rxjs/operators';
-import {DESIGNS} from '../../db-data';
+import {ALBUMS, DESIGNS} from '../../db-data';
 import {Router} from '@angular/router';
 import { Request } from 'express';
 import { REQUEST } from '@nguniversal/express-engine/tokens';
@@ -16,6 +16,7 @@ export class DesignsService {
 
   static readonly API_URL = 'https://angular-universal-course-94047.firebaseio.com';
   designs: any = Object.values(DESIGNS);
+  albums: any = Object.values(ALBUMS);
 
   constructor(private http: HttpClient, private router: Router,
               @Inject(PLATFORM_ID) private platformId: any,
@@ -90,5 +91,44 @@ export class DesignsService {
     }
 
     return this.http.get<string>('/Designs');
+  }
+
+  getAlbums(): Observable<any>{
+    const baseUrl = this.router.url;
+
+    if (isPlatformServer(this.platformId))
+    {
+      console.log('isPlatformServer');
+    }
+    else {
+      console.log('!isPlatformServer');
+    }
+    if (this.document.location == null){
+      console.log('document.location == null');
+    } else {
+      if (this.document.location.hostname == null)
+      {
+        console.log('this.document.location.hostname == null');
+      }
+      else {
+        console.log('this.document.location.hostname = <' +  this.document.location.hostname + '>');
+      }
+    }
+
+    console.log('baseUrl = ', baseUrl);
+
+    if (this.document.location.hostname.length === 0 ||
+      this.document.location.hostname.includes('localhost') ||
+      this.document.location.hostname.includes('10.0.0.9') ||
+      this.document.location.hostname.includes('127.0.0.1')/*||
+    !isPlatformServer(this.platformId) ||
+      baseUrl.includes('localhost' )  ||
+      baseUrl.startsWith('http://10.0.0.6:8080') ||
+      baseUrl.startsWith('http://localhost:4200') ||
+      baseUrl.startsWith('/')*/) {
+      return of(this.albums);
+    }
+
+    return this.http.get<string>('/Albums');
   }
 }
