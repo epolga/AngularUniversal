@@ -21,9 +21,9 @@ export class CourseResolver implements Resolve<Course> {
     resolve(route: ActivatedRouteSnapshot,
             state: RouterStateSnapshot): Observable<Course> {
 
-        const courseId = route.params['id'];
+        const courseId = route.params.id;
 
-        const COURSE_KEY = makeStateKey<Course>("courseKey-" + courseId);
+        const COURSE_KEY = makeStateKey<Course>('courseKey-' + courseId);
 
         if (this.transferState.hasKey(COURSE_KEY)) {
 
