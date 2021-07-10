@@ -6,5 +6,21 @@
 }
 
 .header {
-  margin: 30px 0px 0px 30px
+  margin: 30px 0px 0px 30px;
 }
+
+.albums-tag-list {
+  display: inline-block;
+  background-color: lightblue;
+  width:100%;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-right: 5px;
+}
+
+.intro-text {
+  display: block;
+  background-color: bisque;
+  padding: 20px;
+}
+

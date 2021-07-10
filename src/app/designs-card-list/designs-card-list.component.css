@@ -13,3 +13,16 @@
 .designs-list {
   display: inline-block;
 }
+
+.button-more {
+  top: 250px;
+  position: fixed;
+  height: 100px;
+  z-index: 1;
+  opacity: 70%
+}
+
+.target {
+  display: inline-block;
+  height: 300px
+}

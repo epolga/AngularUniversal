@@ -3,19 +3,20 @@
 </div>
 
 <div class="designs-panel" *appShellNoRender>
-  <div class="designs-list">
+  <div>
           <app-designs-card-list
             [designs] = "designs$ | async">
 
           </app-designs-card-list>
   </div>
-  <div>
+  <div class="albums-tag-list">
     <app-albums-tag-list
       [albums]="albums$ | async">
 
     </app-albums-tag-list>
   </div>
 
+  <div class="intro-text">
 My name is Ann and I am delighted to meet you here!
 For many, many years now I have been creating patterns for embroidery with a counted cross for myself and others, and now I have a wonderful opportunity to share them with you too. You know, I'm sure you will like it as much as my other friends like it. All my patterns, designs and charts have been very carefully designed to make your work easier.
 So what are we talking about? ... We're talking about counted cross stitch ... No need to explain to you that cross stitch is one of the most popular hobbies in the world. It is very easy to learn and very easy to do, cross stitch is just embroidery with many small crosses to create a beautiful, memorable design. This fun craft is sometimes referred to as “counting cross stitching” because the pattern requires the embroiderer to carefully count the number of places so that she knows exactly where to place the stitches.
@@ -41,4 +42,5 @@ You can sign up to my Newsletter and receive new cross stitch designs each time 
 
 And you can write me
 and I'll try to find the cross-stitch pattern you want and add it to my collection.
+  </div>
 </div>

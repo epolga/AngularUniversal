@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Design} from "../model/design";
+import {Design} from '../model/design';
+import {DesignsService} from "../services/designs.service";
 
 @Component({
   selector: 'app-designs-card-list',
@@ -8,7 +9,7 @@ import {Design} from "../model/design";
 })
 export class DesignsCardListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private designsService: DesignsService) { }
 
   @Input()
   designs: Design[];
@@ -16,4 +17,9 @@ export class DesignsCardListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  scrollToElement($element): void {
+    this.designsService.getNextRandomDesigns(3)
+      .subscribe(result => this.designs = result);
+    $element.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
 }

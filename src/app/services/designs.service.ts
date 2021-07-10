@@ -17,7 +17,8 @@ export class DesignsService {
   static readonly API_URL = 'https://angular-universal-course-94047.firebaseio.com';
   designs: any = Object.values(DESIGNS);
   albums: any = Object.values(ALBUMS);
-
+  designsClone: Design[] = [];
+  designsResult: Design[] = [];
   constructor(private http: HttpClient, private router: Router,
               @Inject(PLATFORM_ID) private platformId: any,
               @Optional() @Inject(REQUEST) protected request: Request,
@@ -25,62 +26,9 @@ export class DesignsService {
   }
 
   getDesigns(): Observable<any>{
-    const baseUrl = this.router.url;
- /*
-    if (isPlatformServer(this.platformId) && this.request.hostname === 'localhost' && this.request.headers.referer) {
-          console.log('server 1: ' + urlParse(this.request.headers.referer).hostname);
-        }
-
-    if (isPlatformServer(this.platformId)) {
-          console.log('server 2: ' + this.request.hostname);
-        } else {
-          console.log('browser: ' + window.location.hostname);
-        }
-*/
-    if (isPlatformServer(this.platformId))
-    {
-      console.log('isPlatformServer');
-    }
-    else {
-      console.log('!isPlatformServer');
-    }
-    if (this.document.location == null){
-      console.log('document.location == null');
-    } else {
-      if (this.document.location.hostname == null)
-      {
-        console.log('this.document.location.hostname == null');
-      }
-      else {
-        console.log('this.document.location.hostname = <' +  this.document.location.hostname + '>');
-      }
-    }
-    /*
-    if (window == null)
-    {
-      console.log('window == null');
-    } else{
-      console.log('window != null');
-      if (window.location == null)
-      {
-        console.log('window.location == null');
-      } else
-      {
-        console.log('window.location != null');
-        if (window.location.hostname == null)
-        {
-          console.log('window.location.hostname == null');
-        } else {
-          console.log('window.location.hostname == ', window.location.hostname);
-        }
-      }
-    }
-*/
-    console.log('baseUrl = ', baseUrl);
-
     if (this.document.location.hostname.length === 0 ||
       this.document.location.hostname.includes('localhost') ||
-      this.document.location.hostname.includes('10.0.0.9') ||
+      this.document.location.hostname.includes('10.0.0.6') ||
       this.document.location.hostname.includes('127.0.0.1')/*||
     !isPlatformServer(this.platformId) ||
       baseUrl.includes('localhost' )  ||
@@ -91,6 +39,79 @@ export class DesignsService {
     }
 
     return this.http.get<string>('/Designs');
+  }
+
+  getRandomDesigns(nDesigns: number): Observable<any>{
+    if (this.document.location.hostname.length === 0 ||
+      this.document.location.hostname.includes('localhost') ||
+      this.document.location.hostname.includes('10.0.0.6') ||
+      this.document.location.hostname.includes('127.0.0.1')/*||
+    !isPlatformServer(this.platformId) ||
+      baseUrl.includes('localhost' )  ||
+      baseUrl.startsWith('http://10.0.0.6:8080') ||
+      baseUrl.startsWith('http://localhost:4200') ||
+      baseUrl.startsWith('/')*/) {
+
+      if (this.designsClone.length === 0)
+      {
+        this.designsClone = this.designs.slice();
+      }
+
+      for (let i = 0; i < nDesigns; i++)
+      {
+        console.log('i = ', i);
+        const nRandom: number = Math.floor(Math.random() * this.designs.length);
+        const rndDesign = this.designs[nRandom];
+        this.designsResult.push(rndDesign);
+        this.designs.splice(nRandom, 1);
+      }
+
+      return of(this.designsResult);
+    }
+
+    return this.http.get<Design[]>('/Designs');
+  }
+
+  getNextRandomDesigns(nDesigns: number): Observable<any>{
+
+
+    if (true) {
+      return this.http.get<Design[]>('/Designs/NextRandomDesigns?nDesigns=3');
+    }
+
+    if (this.document.location.hostname.length === 0 ||
+      this.document.location.hostname.includes('localhost') ||
+      this.document.location.hostname.includes('10.0.0.6') ||
+      this.document.location.hostname.includes('127.0.0.1')/*||
+    !isPlatformServer(this.platformId) ||
+      baseUrl.includes('localhost' )  ||
+      baseUrl.startsWith('http://10.0.0.6:8080') ||
+      baseUrl.startsWith('http://localhost:4200') ||
+      baseUrl.startsWith('/')*/) {
+
+      if (this.designsClone.length === 0)
+      {
+        this.designsClone = this.designs.slice();
+      }
+
+      for (let i = 0; i < nDesigns; i++)
+      {
+        if (this.designs.length === 0)
+        {
+          break;
+        }
+        console.log('i = ', i);
+        const nRandom: number = Math.floor(Math.random() * this.designs.length);
+
+        const rndDesign = this.designs[nRandom];
+        this.designsResult.push(rndDesign);
+        this.designs.splice(nRandom, 1);
+      }
+
+      return of(this.designsResult);
+    }
+
+      return this.http.get<string>('/Designs/NextRandomDesigns?nDesigns=3');
   }
 
   getAlbums(): Observable<any>{
@@ -119,7 +140,7 @@ export class DesignsService {
 
     if (this.document.location.hostname.length === 0 ||
       this.document.location.hostname.includes('localhost') ||
-      this.document.location.hostname.includes('10.0.0.9') ||
+      this.document.location.hostname.includes('10.0.0.6') ||
       this.document.location.hostname.includes('127.0.0.1')/*||
     !isPlatformServer(this.platformId) ||
       baseUrl.includes('localhost' )  ||
@@ -129,6 +150,6 @@ export class DesignsService {
       return of(this.albums);
     }
 
-    return this.http.get<string>('/Albums');
+    return this.http.get<string>('/Designs/Albums');
   }
 }

@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
                 map(Object.values)
             );
         // const baseUrl = this.getBaseUrl();
-        this.designs$ = this.designesService.getDesigns();
+        this.designs$ = this.designesService.getRandomDesigns(3);
         this.albums$ = this.designesService.getAlbums();
     }
 /*

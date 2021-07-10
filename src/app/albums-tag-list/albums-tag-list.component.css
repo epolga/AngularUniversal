@@ -1,6 +1,12 @@
 .album-tag {
-  margin: 20px 10px;
+  margin: 10px 0px 0px 10px;
   float: left;
-  width: 100px;
-  padding: 10px;
+  height: 37px;
+  border: 2px solid mediumseagreen;
+  border-radius: 10px;
+  background-color: white;
+  transition: background-color 1s;
+}
+.album-tag:hover{
+  background-color: #e4e7eb;
 }
