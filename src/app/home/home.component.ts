@@ -16,7 +16,6 @@ import {Album} from '../model/album';
 export class HomeComponent implements OnInit {
 
   courses$: Observable<Course[]>;
-  designs$: Observable<Design[]>;
   albums$: Observable<Album[]>;
 
   constructor(private coursesService: CoursesService,
@@ -33,8 +32,7 @@ export class HomeComponent implements OnInit {
             .pipe(
                 map(Object.values)
             );
-        // const baseUrl = this.getBaseUrl();
-        this.designs$ = this.designesService.getRandomDesigns(3);
+
         this.albums$ = this.designesService.getAlbums();
     }
 /*

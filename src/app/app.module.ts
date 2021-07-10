@@ -34,6 +34,8 @@ import {AppShellNoRenderDirective} from "./directives/app-shell-norender.directi
 import {DesignsService} from "./services/designs.service";
 import { DesignsCardListComponent } from './designs-card-list/designs-card-list.component';
 import { AlbumsTagListComponent } from './albums-tag-list/albums-tag-list.component';
+import { LoadingComponent } from './loading/loading.component';
+import {LoadingService} from "./loading/loading.service";
 
 
 
@@ -49,7 +51,8 @@ import { AlbumsTagListComponent } from './albums-tag-list/albums-tag-list.compon
     AppShellRenderDirective,
     AppShellNoRenderDirective,
     DesignsCardListComponent,
-    AlbumsTagListComponent
+    AlbumsTagListComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -78,6 +81,7 @@ import { AlbumsTagListComponent } from './albums-tag-list/albums-tag-list.compon
   providers: [
     CoursesService,
     DesignsService,
+    LoadingService,
     CourseResolver
   ],
   bootstrap: [AppComponent]

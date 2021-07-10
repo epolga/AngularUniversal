@@ -1,5 +1,6 @@
 <div class="designs-list">
-  <div *ngFor="let design of designs" class="design-card mat-elevation-z10">
+  <app-loading></app-loading>
+  <div *ngFor="let design of (designs$ | async)" class="design-card mat-elevation-z10">
   <mat-card-header>
     <p>{{design.Caption}}</p>
   </mat-card-header>
@@ -20,7 +21,7 @@
 
   </mat-card-actions>
 </div>
-  <button mat-fab class="float-left button-more" color="primary"(click)="scrollToElement(target)">
+  <button mat-fab class="float-left button-more" color="primary"(click)="loadMoreDesigns(target)">
      More<br>Designs<br><mat-icon>expand_more</mat-icon>
   </button>
 </div>
